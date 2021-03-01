@@ -14,6 +14,7 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 
+    // adding random comment
     private final String SECRET_KEY= "1C7518BACDC421EFD64DB246FCE47s8A528C34126E466D58C9C74931F8D";
 
     //meotdy korzystające z  extract claims
