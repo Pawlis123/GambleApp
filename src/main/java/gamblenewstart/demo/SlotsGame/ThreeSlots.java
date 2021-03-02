@@ -1,8 +1,6 @@
 package gamblenewstart.demo.SlotsGame;
 
 
-import gamblenewstart.demo.Entities.SlotsResponse;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -11,7 +9,7 @@ import java.util.Random;
 
 
 @Component
-public class ThreeSlots implements SlotsStrategy, Colour {
+public class ThreeSlots implements SlotsStrategy, ColourConstants {
 
     private final Random randomizer;
 
@@ -29,7 +27,7 @@ public class ThreeSlots implements SlotsStrategy, Colour {
     public String[] resultGenerator() {
         String[] result = new String[3];
         for(int i = 0; i<result.length;i++)
-            result[i] = (Colour.colours)[randomizer.nextInt(Colour.colours.length)];
+            result[i] = (ColourConstants.colours)[randomizer.nextInt(ColourConstants.colours.length)];
         return result;
     }
 
@@ -54,9 +52,9 @@ public class ThreeSlots implements SlotsStrategy, Colour {
             }
 
         if(streak == 2)
-            multiplier = Colour.doubleStreakMultiplierMap.get(streakString);
+            multiplier = ColourConstants.doubleStreakMultiplierMap.get(streakString);
         else if(streak == 3)
-            multiplier = Colour.tripleStreakMultiplierMap.get(streakString);
+            multiplier = ColourConstants.tripleStreakMultiplierMap.get(streakString);
 
         return Math.round(multiplier*bet);
     }

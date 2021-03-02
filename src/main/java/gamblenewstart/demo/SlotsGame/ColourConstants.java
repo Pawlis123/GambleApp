@@ -3,7 +3,7 @@ package gamblenewstart.demo.SlotsGame;
 import java.util.HashMap;
 import java.util.Map;
 
-public interface Colour {
+public interface ColourConstants {
     String DIAMONDS = "diamonds";
     String CLUBS = "clubs";
     String HEARTS = "hearts";

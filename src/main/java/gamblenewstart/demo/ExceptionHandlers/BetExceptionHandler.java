@@ -20,13 +20,5 @@ public class BetExceptionHandler {
 
         return new ResponseEntity<>(error,HttpStatus.PRECONDITION_FAILED);
     }
-    @ExceptionHandler
-    public ResponseEntity<BasicErrorResponse> handleException(Exception exception){
-        BasicErrorResponse error = new BasicErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
-                exception.getMessage(),
-                System.currentTimeMillis());
 
-        return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
-    }
 }

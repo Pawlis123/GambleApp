@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class RegisterExceptionHandler {
+public class RegisterAndLoginExceptionHandler {
 
     @ExceptionHandler
-    public ResponseEntity<BasicErrorResponse> handleException(UsernameIsBeingAlreadyUsedException exception){
+    public ResponseEntity<BasicErrorResponse> handleRegisterException(UsernameIsBeingAlreadyUsedException exception){
         BasicErrorResponse error = new BasicErrorResponse(
-                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.UNPROCESSABLE_ENTITY.value(),
                 exception.getMessage(),
                 System.currentTimeMillis());
 
@@ -22,11 +22,12 @@ public class RegisterExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<BasicErrorResponse> handleException(Exception exception){
+    public ResponseEntity<BasicErrorResponse> handleAuthenticationException(Exception exception){
         BasicErrorResponse error = new BasicErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.UNAUTHORIZED.value(),
                 exception.getMessage(),
                 System.currentTimeMillis());
+
 
         return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
     }

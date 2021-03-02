@@ -1,5 +1,6 @@
 package gamblenewstart.demo.Security;
 
+
 import gamblenewstart.demo.Filters.JwtRequestFilter;
 import gamblenewstart.demo.Repository.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -53,6 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS); //jwt z założenia jest beststanowe zatem ustawiamy aby spring nie zajmował się sesjami
+
 
              http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class); // jako że nie ma sesji, to ta linijka
 

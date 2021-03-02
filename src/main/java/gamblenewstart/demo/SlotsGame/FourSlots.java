@@ -10,7 +10,7 @@ import java.util.Random;
 
 @Component
 @Qualifier("FOUR")
-public class FourSlots implements SlotsStrategy, Colour {
+public class FourSlots implements SlotsStrategy, ColourConstants {
 
     private final Random randomizer;
 
@@ -26,7 +26,7 @@ public class FourSlots implements SlotsStrategy, Colour {
     public String[] resultGenerator() {
         String[] lotteryResult = new String[4];
         for(int i = 0; i<lotteryResult.length;i++)
-            lotteryResult[i] = (Colour.colours)[randomizer.nextInt(Colour.colours.length)];
+            lotteryResult[i] = (ColourConstants.colours)[randomizer.nextInt(ColourConstants.colours.length)];
 
         return lotteryResult;
     }
@@ -52,7 +52,7 @@ public class FourSlots implements SlotsStrategy, Colour {
 
          if(resultMap.size() == 2 && resultMap.containsValue(3)){
             //three same colours
-            multiplier = Colour.tripleStreakMultiplierMap.get(maxColour) + fourSlotsBonus;
+            multiplier = ColourConstants.tripleStreakMultiplierMap.get(maxColour) + fourSlotsBonus;
         }
         else if(resultMap.size() == 2 && resultMap.containsValue(2)) {
             // 2x double same colours
@@ -60,15 +60,15 @@ public class FourSlots implements SlotsStrategy, Colour {
                  if (!result.equals(maxColour))
                      secondStreak = result;
              }
-             multiplier = Colour.doubleStreakMultiplierMap.get(maxColour)*Colour.doubleStreakMultiplierMap.get(secondStreak);
+             multiplier = ColourConstants.doubleStreakMultiplierMap.get(maxColour)* ColourConstants.doubleStreakMultiplierMap.get(secondStreak);
         }
         else if(resultMap.size() == 3){
             // double same colours
-             multiplier = Colour.doubleStreakMultiplierMap.get(maxColour);
+             multiplier = ColourConstants.doubleStreakMultiplierMap.get(maxColour);
          }
         else{
             //four same colours
-          multiplier = Colour.quadrupleStreakMultiplierMap.get(maxColour);
+          multiplier = ColourConstants.quadrupleStreakMultiplierMap.get(maxColour);
          }
     return  Math.round(multiplier*bet);
     }
