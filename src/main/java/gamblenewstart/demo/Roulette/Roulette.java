@@ -23,8 +23,8 @@ public class Roulette implements RouletteGame, RouletteConstants {
         return coloursOfNumber.get(winningNumber);
     }
 
-    @Override
-    public long startGame(long bet, String betType) {
-        return 0;
-    }
+//    @Override
+//    public long startGame(long bet, String betType) {
+//        return 0;
+//    }
 }
